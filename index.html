@@ -1,0 +1,302 @@
+<!doctype html>
+
+<html>
+	<head>
+		<meta charset='UTF-8'>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+		<style type='text/css'>	
+		* { 
+			margin:0px;
+			padding:0px;
+			font-family:"Trebuchet MS", Helvetica, sans-serif;
+		}
+		
+		table {
+			width: 100%;		
+		}
+		
+		table tr td {
+			padding: 8px 10px 5px 10px;
+		}
+		
+		.right {
+			text-align: right;
+			width: 10px;
+			padding: none;
+			min-width: 20px;
+			max-width: 20px;
+		}
+		td {
+			border: solid 1px black;
+			border-right: none;
+		}
+
+		.question {
+			width: 100%;
+			height: 20px;
+		}		
+
+		#label_area {
+			border-right: none;
+			border-bottom: none;
+			display: block;
+
+		}
+			#header{
+				background-color: #5f005f;
+				height: 100px;
+				width: 100%;
+				color: white;
+			}
+
+				#dare {
+					color: #ffee00;
+				}
+				#options {
+					float: right;
+					margin-top: 9px;
+					margin-right: 8px;
+
+				}
+				h1{
+					display: inline-block;
+					margin-left: 80px;
+					margin-top: 25px;
+					font-size: 50px;
+				}
+			#main_content {
+				border: 7px solid #5f005f;
+				background-color: white;
+			}
+				
+				.statement {
+					width: 100%;
+				}
+				#submit_label {
+					display: inline-block;
+					margin-left: 50px;
+					margin-top: 18px;
+					font-weight: bold;
+					display: inline-block;
+					margin-right: 15px;
+					margin-bottom: 20px;
+					font-size: 20px;
+				}
+
+				#submit {
+					background-color: #5f005f;
+					display: inline-block;
+					padding: 5px 18px 5px 18px;
+					border-radius: 5px;
+					color: white;
+					font-size: 15px;
+					margin-right: -100px;
+				}
+
+				#result_area {
+					width: 75%;
+					border: 1px solid #5f005f;
+					border-radius: 5px;
+					margin-top: 30px;
+					margin-left: 15%;
+					margin-bottom: 50px;
+				}
+					
+					#results_header {
+						color: #5f005f;
+						font-size: 30px;
+						padding: 15px 20px 5px 30px;
+					}
+
+					#note {
+						padding: 0px 20px 10px 30px;	
+						font-size: 15px;
+						font-style: italic;
+					}
+
+					#result {
+						padding: 0px 30px 10px 80px;	
+						font-size: 20px;
+						line-height: 30px;
+					}
+
+					#score_margin {
+						color: #5f005f;
+
+					}
+
+					h4 {
+						display: inline-block;
+						color: #5f005f;
+						font-size: 25px;
+						padding: 10px 80px 0px 30px;	
+					}
+		</style>
+		<script>
+			$(document).ready(function() {
+				var html = '';
+				var text = "";
+				for(var i=1;i<= 24; i++) {
+					html +='<tr>';
+					
+					switch(i) {
+						case 1:
+							text='1. I handle new social situations with comfort and ease.';
+							break;
+						case 2:
+							text ='2. I feel positive and energized about life.';
+							break;
+						case 3:
+							text="3. I don't avoid a task just because it looks difficult.";
+							break;
+						case 4:
+							text='4. I keep trying, even after others have given up.';
+							break;
+						case 5:
+							text ="5. If I work hard to solve a problem, I'll find the answer.";
+							break;
+						case 6:
+							text ='6. I set and achieve the goals for myself.';
+							break;		
+						case 7:
+							text ="7. When I face difficulty, I don't lose hope in my abilities.";
+							break;
+						case 8:
+							text ='8. I am comfortable giving and taking constructive criticism.';
+							break;
+						case 9:
+							text ="9. I openly share my opinions even when they run counter to others' views.";
+							break;
+						case 10:
+							text ="10. I have contact with people of similar skills and experience who I consider successful.";
+							break;
+						case 11:
+							text ="11. I am the first person to introduce myself when meeting new people.";
+							break;
+						case 12:
+							text ="12. I am comfortable asking questions when attending a large conference.";
+							break;	
+						case 13:
+							text ="13. I am comfortable speaking in front of large audiences.";
+							break;		
+						case 14:
+							text ="14. I don't need to experience success early in a process to continue.";
+							break;
+						case 15:
+							text ="15. When I overcome an obstacle, I think about the lessons I've learned.";
+							break;
+						case 16:
+							text ="16. I believe that if I work hard, I'll achieve my goals.";
+							break;
+						case 17:
+							text ="17. I always make eye contact when speaking with others.";
+							break;
+						case 18:
+							text ="18. How I feel about myself is more important than how others feel about me.";
+							break;
+						case 19:
+							text ="19. If someone appears to dislike me, I take a proactive approach and try to find out why and win them over.";
+							break;	
+						case 20:
+							text ="20. It's not necessary for me to be liked by everyone.";
+							break;
+						case 21:
+							text ="21. When I realize I've made a mistake, I immediately take responsibility.";
+							break;
+						case 22:
+							text ="22. I am comfortable with how I look.";
+							break;
+						case 23:
+							text ="23. I am comfortable challenging the status quo when I see something I do not believe to be right, even if it puts my job at risk.";
+							break;
+						case 24:
+							text ="24. I am very proud of what I have accomplished in life.";
+							break;
+										
+					}
+
+					html += "<td class='question'>"+text+"</td>";
+					for(var j = 1; j <=5; j++) {
+						html += "<td class='right'><input type='radio' name=q"+i+" value="+j+"></td>";
+					}
+					html +='</tr>';
+					$('#table_data').html(html);
+				}
+				$('#results').css({"visibility":"hidden"});
+
+				$('#submit').click(function() {
+					var result = 0;
+					var never = 0;
+					var rare = 0;
+					var sometimes = 0;
+					var often = 0;
+					var always = 0;
+					var total = 0;
+					var html = '';
+					for(var i=1;i<= 24; i++) {
+						var value = parseInt($("input:radio[name=q"+i+"]:checked").val());	
+						switch(value) {
+							case 1:
+								never++;
+								break;
+							case 2: 
+								rare++;
+								break;
+							case 3: 
+								sometimes++;
+								break;
+							case 4: 
+								often++;
+								break;
+							case 5:
+								always++;
+								break;			
+						}
+					}
+					total = (never * 0) + (rare * 1) + (sometimes * 2) + (often * 3) + (always * 4);
+
+					console.log('test');
+
+					if(total <= 47) {
+						$('#result').html("<p id='result'><span id='score_margin'>0 to 47 points: </span>You need to believe in yourself more! Take a closer look at all the things you've achieved in your life - you've accomplished a lot more than you realize. Try not to focus on what you lack, since doing so takes time and attention away from recognizing your skills and talents. </p>");
+
+					} else if(total >= 48 && total <= 71) {
+						$('#result').html("<p id='result'><span id='score_margin'>48 to 71 points: </span>You're doing a decent job of recognizing your skills and believing in your abilities. But you're still a little too hard on yourself, and this may stop you from achieving the full benefits of your experience, skills, and talents.</p>");
+
+					} else if(total >= 72) {
+						 $('#result').html("<p id='result'><span id='score_margin'>72 to 96 points: </span>You're doing a great job of learning from experiences and from others. By not allowing obstacles to affect the way you see yourself, you have a bright outlook that will most definitely resonate amongst those around you. Keep in mind that self-confidence must be nurtured, so keep engaging in confidence boosting behaviors to ensure that your life remains full of validation and success.</p>");
+					}
+					
+					$('#score').text('Score: ' + total);
+
+					$('#results').css({"visibility":"visible"});
+				});
+			});	
+		</script>
+	</head>
+	<body>
+		<div id='container'>
+			<div id='header'>
+				<h1><span id='dare'>DARE</span> Confidence Quiz</h1>
+				<img src="outcomes.png" alt="No Image Found" id='options'>
+			</div>
+			<div id='main_content'>
+				<table cellspacing="0" id='table_data'>
+					
+				</table>
+				<label id='submit_label'><i>How did you score? Click submit to see your results below.</i></label>
+				<button type="button" id='submit'>Submit</button>
+					<div id='result_area'>
+						<h4 id='results_header'>Results</h4>
+						<div id='results'>
+							<p id='note'>Note: This is not a clinically validated test. It is a guide to help you assess further exploration of your self-confidence.</p>
+							<h4 id='score'>Score: </h4>
+							<p id='result'> 
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
